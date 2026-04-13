@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD 배포 성공!</title>
+    <style>
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        .status-badge {
+            background-color: #28a745;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        h1 { margin-bottom: 1rem; color: #1a73e8; }
+        .pipeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+        .step { font-weight: 600; color: #5f6368; }
+        .arrow { color: #bcc1c6; }
+        footer { margin-top: 2rem; font-size: 0.8rem; color: #888; }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="status-badge">DEPLOYMENT SUCCESS</div>
+        <h1>자동 배포 완료! 🚀</h1>
+        <p>GitHub Actions부터 EC2 Nginx까지의<br>파이프라인이 정상적으로 작동하고 있습니다.</p>
+
+        <div class="pipeline">
+            <div class="step">Push</div>
+            <div class="arrow">➔</div>
+            <div class="step">Actions</div>
+            <div class="arrow">➔</div>
+            <div class="step">S3</div>
+            <div class="arrow">➔</div>
+            <div class="step">SSM</div>
+            <div class="arrow">➔</div>
+            <div class="step">EC2</div>
+        </div>
+
+        <footer>
+            <p>본 페이지는 GitHub Actions를 통해 S3에서 가져온 최신 빌드본입니다.</p>
+            <p id="timestamp"></p>
+        </footer>
+    </div>
+
+    <script>
+        // 마지막 업데이트 시간 표시
+        document.getElementById('timestamp').innerText = 
+            "마지막 배포 확인 시간: " + new Date().toLocaleString();
+    </script>
+</body>
+</html>
