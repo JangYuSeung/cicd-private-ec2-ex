@@ -11,7 +11,7 @@ jobs:
       - name: Checkout code(소스코드 가져오기)
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials(AWS 자격 증명 구성)
+      - name: Configure AWS credentials(AWS 자격 증명 구성!)
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
